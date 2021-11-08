@@ -1,1 +1,49 @@
-NA
+&cross; &check;
+
+:bulb:
+
+https://documentation.help/DotNetZip/
+https://github.com/haf/DotNetZip.Semverd
+
+For updating a ProgressBar
+Needs work
+public void SaveProgress(object sender, SaveProgressEventArgs e)
+{
+	if (this.InvokeRequired)
+	{
+		this.Invoke(new Action<Object, SaveProgressEventArgs>(SaveProgress),  new Object[] { sender, e });
+	}
+	else
+	{
+		switch (e.EventType)
+		{
+			case ZipProgressEventType.Saving_Started:
+				//Console.WriteLine("pb max {0}", e.EntriesTotal);
+				this.progressBar1.Maximum = e.EntriesTotal;
+				this.progressBar1.Value = 0;
+				this.progressBar1.Minimum = 0;
+				this.progressBar1.Step = 1;
+				break;
+
+			case ZipProgressEventType.Saving_BeforeWriteEntry:
+				//Console.WriteLine("entry {0}", e.CurrentEntry.FileName);
+				this.label1.Text = e.CurrentEntry.FileName;
+				break;
+
+			case ZipProgressEventType.Saving_AfterWriteEntry:
+				this.progressBar1.PerformStep();
+				break;
+		}
+		this.Update();
+		//Application.DoEvents();
+	}
+}
+
+
+        [TestMethod]
+        [TestTraits(Trait.ZipOperations)]
+        public void ProgressTest()
+        {
+            //https://documentation.help/DotNetZip/842e7449-867a-2bed-dac5-4b7ac456d2ed.htm
+            //https://documentation.help/DotNetZip/547e4c24-4683-96df-036e-19bc34ba27e4.htm
+        }
