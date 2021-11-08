@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ExtractFilesWithProgress</name>
+    </assembly>
+    <members>
+        <member name="M:ExtractFilesWithProgress.LanguageExtensions.Extensions.PercentageOf(System.Int32,System.Int32)">
+            <summary>
+            Return current percent from currentValue of
+            totalValue
+            </summary>
+            <param name="currentValue"></param>
+            <param name="totalValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ExtractFilesWithProgress.LanguageExtensions.Extensions.ToEnglishKb(System.Int64)">
+            <summary>
+            Provides byte abbreviations 
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+            <remarks>
+            array elements in suffix could be changed to uppercase 
+            </remarks>
+        </member>
+        <member name="T:ExtractFilesWithProgress.Delegates.Delegates.DelegatesModule">
+            <summary>
+            Delegate used for passing timely data from extraction
+            of files from a compressed file.
+            </summary>
+        </member>
+        <member name="T:ExtractFilesWithProgress.Form1">
+            <summary>
+            Formatting may appear messed up when viewing in the GitHub repo, unsure why
+            </summary>
+        </member>
+        <member name="M:ExtractFilesWithProgress.Form1.#ctor">
+            <summary>
+            Event for passing information from a Task responsible
+            for extracting files to the user interface which is
+            in a different context.
+            </summary>
+        </member>
+        <member name="M:ExtractFilesWithProgress.Form1.SelectZipFileButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Code to select zip file to work with
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ExtractFilesWithProgress.Form1.SelectFolderButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Code to select folder to extract zip file 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ExtractFilesWithProgress.Form1.ExtractAllAsync(System.String,System.String,System.Windows.Forms.ProgressBar)">
+            <summary>
+            Extract files from a zip file
+            </summary>
+            <param name="zipFileName">compressed file with path</param>
+            <param name="extractPath">folder to extract file too</param>
+            <param name="progressBar">optional ProgressBar</param>
+            <returns>Nothing, Task is used to be awaitable</returns>
+        </member>
+        <member name="M:ExtractFilesWithProgress.Form1.OnZipEventHandler(System.Object,ExtractFilesWithProgress.Classes.Classes.ZipArgs)">
+            <summary>
+            Receive information from extraction process. Note use of Invoke
+            to prevent cross thread violations as the async operations are
+            performed in a different thread then the calling code in this form.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:ExtractFilesWithProgress.Form1.PurgeTargetFolderButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Used to delete all files from target extract folder
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:ExtractFilesWithProgress.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ExtractFilesWithProgress.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ExtractFilesWithProgress.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:ExtractFilesWithProgress.Properties.Resources.DeleteFolder_16x">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ExtractFilesWithProgress.Properties.Resources.Dialog_16x">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ExtractFilesWithProgress.Properties.Resources.ExtractMethod_16x">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ExtractFilesWithProgress.Properties.Resources.Folder_16x">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:ExtractFilesWithProgress.Classes.Classes.ZipArgs">
+            <summary>
+            For ZipEventHandler delegate args
+            </summary>
+        </member>
+        <member name="M:ExtractFilesWithProgress.Classes.Dialogs.Question(System.String)">
+            <summary>
+            MessageBox wrapper to ask a question with No as the default button
+            </summary>
+            <param name="text"></param>
+            <returns>true if okay to continue, false to abort</returns>
+        </member>
+    </members>
+</doc>
