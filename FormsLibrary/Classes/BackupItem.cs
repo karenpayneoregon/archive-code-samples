@@ -14,6 +14,5 @@ namespace FormsLibrary.Classes
         public string DirectoryName { get; set; }
         public string ShortName => PathHelpers.GetShortPath(DirectoryName);
         public override string ToString() => DirectoryName;
-
     }
 }
