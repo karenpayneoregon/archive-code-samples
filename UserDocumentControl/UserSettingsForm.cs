@@ -15,7 +15,6 @@ namespace UserDocumentControl
 {
     public partial class UserSettingsForm : Form
     {
-        private List<BackupItem> _includeBackupItemsList = new List<BackupItem>();
 
         public UserSettingsForm()
         {
@@ -27,10 +26,11 @@ namespace UserDocumentControl
 
         private void OnShown(object sender, EventArgs e)
         {
-            SelectedFoldersCheckListBox.AllowDrop = true;
-            SelectedFoldersCheckListBox.DragDrop += SelectedFoldersCheckListBoxOnDragDrop;
-            SelectedFoldersCheckListBox.DragEnter += SelectedFoldersCheckListBoxOnDragEnter;
+            FoldersCheckListBox.AllowDrop = true;
+            FoldersCheckListBox.DragDrop += SelectedFoldersCheckListBoxOnDragDrop;
+            FoldersCheckListBox.DragEnter += SelectedFoldersCheckListBoxOnDragEnter;
         }
+
         private void SelectedFoldersCheckListBoxOnDragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
@@ -47,16 +47,16 @@ namespace UserDocumentControl
             {
                 if (!Directory.Exists(item)) continue;
 
-                var index = SelectedFoldersCheckListBox.FindString(item);
+                var index = FoldersCheckListBox.FindString(item);
 
                 // Disallow duplicates 
                 if (index == -1)
                 {
-                    SelectedFoldersCheckListBox.AddAsChecked(item);
+                    FoldersCheckListBox.AddAsChecked(item);
                 }
                 else
                 {
-                    SelectedFoldersCheckListBox.SelectedIndex = index;
+                    FoldersCheckListBox.SelectedIndex = index;
                 }
             }
 
@@ -69,11 +69,46 @@ namespace UserDocumentControl
         /// <param name="e"></param>
         private void SaveSettingsButton_Click(object sender, EventArgs e)
         {
-            var includeList = SelectedFoldersCheckListBox.CheckedList();
-            var excludeList = SelectedFoldersCheckListBox.NotCheckedList();
+            var includeList = FoldersCheckListBox.CheckedList();
+            var excludeList = FoldersCheckListBox.NotCheckedList();
 
             var results = ItemOperations.ProcessCheckBoxItems(includeList, excludeList);
             ItemOperations.SaveItems(results);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var (hasItems, backupItems) = ItemOperations.ReadItems();
+            if (hasItems)
+            {
+                FoldersCheckListBox.Items.Clear();
+
+                for (int index = 0; index < backupItems.Count; index++)
+                {
+                    FoldersCheckListBox.Items.Add(backupItems[index].DirectoryName);
+                    FoldersCheckListBox.SetItemCheckState(index, backupItems[index].IncludeFolder ?
+                        CheckState.Checked :
+                        CheckState.Unchecked);
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FoldersCheckListBox.Items.Clear();
+        }
+
+        private void RemoveCurrentButton_Click(object sender, EventArgs e)
+        {
+            var index = FoldersCheckListBox.SelectedIndex;
+            if (index > -1)
+            {
+                if (Dialogs.Question($"Remove {FoldersCheckListBox.Text}"))
+                {
+                    FoldersCheckListBox.RemoveBackItem(index);
+                }
+                
+            }
         }
     }
 }

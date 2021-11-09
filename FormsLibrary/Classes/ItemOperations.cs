@@ -12,6 +12,7 @@ namespace FormsLibrary.Classes
     {
 
         public static string JsonFileName => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FolderSelections.json");
+        public static bool JsonFileExists => File.Exists(JsonFileName);
 
         /// <summary>
         /// Remember user directory directory selections
@@ -38,6 +39,9 @@ namespace FormsLibrary.Classes
             return list;
         }
 
+        /// <summary>
+        /// Save current selections to <see cref="JsonFileName"/>
+        /// </summary>
         public static void SaveItems(List<BackupItem> source)
         {
             if (source.Count <= 0) return;
@@ -46,11 +50,22 @@ namespace FormsLibrary.Classes
 
         }
 
-        public static List<BackupItem> ReadItems()
+        /// <summary>
+        /// Read <see cref="BackupItem"/> list from <see cref="JsonFileName"/>
+        /// </summary>
+        /// <remarks>
+        /// If <see cref="JsonFileName"/> does not exists, an empty list is returned
+        /// </remarks>
+        public static (bool hasItems, List<BackupItem> backupItems) ReadItems()
         {
-            List<BackupItem> list = new List<BackupItem>();
+            if (JsonFileExists)
+            {
+                var json = File.ReadAllText(JsonFileName);
 
-            return list;
+                return (true, JsonConvert.DeserializeObject<List<BackupItem>>(json));
+            }
+
+            return (false, new List<BackupItem>());
         }
 
     }
