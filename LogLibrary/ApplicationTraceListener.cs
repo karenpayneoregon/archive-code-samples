@@ -19,7 +19,6 @@ namespace LogLibrary
 
         public void CreateLog()
         {
-
             _textWriterTraceListener = new TextWriterTraceListener(_logFileName, "PayneListener");
             Trace.Listeners.Add(_textWriterTraceListener);
         }
@@ -96,7 +95,7 @@ namespace LogLibrary
         {
             if (_textWriterTraceListener == null) return;
             if (!WriteToTraceFile) return;
-
+            
             _textWriterTraceListener.Flush();
             _textWriterTraceListener.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss},{type},{callerName},{message}");
         }

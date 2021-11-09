@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using FormsLibrary.Classes;
 using FormsLibrary.Extensions;
 using LogLibrary;
+using WK.Libraries.BetterFolderBrowserNS;
 
 namespace UserDocumentControl
 {
@@ -21,8 +22,14 @@ namespace UserDocumentControl
         {
             InitializeComponent();
             Shown += OnShown;
+            ArchiveFileNameTextBox.Leave += ArchiveFileNameTextBoxOnLeave;
         }
 
+        private void ArchiveFileNameTextBoxOnLeave(object sender, EventArgs e)
+        {
+            ArchiveFileNameTextBox.EnsureZipExtension();
+        }
+        
         private void OnShown(object sender, EventArgs e)
         {
             FoldersCheckListBox.AllowDrop = true;
@@ -59,7 +66,7 @@ namespace UserDocumentControl
             }
         }
 
-        private void SaveSettingsButton_Click(object sender, EventArgs e)
+        private void SaveFoldersButton_Click(object sender, EventArgs e)
         {
             var results = ItemOperations.ProcessCheckBoxItems(FoldersCheckListBox.CheckedList(), FoldersCheckListBox.NotCheckedList());
             ItemOperations.SaveItems(results);
@@ -84,7 +91,7 @@ namespace UserDocumentControl
                 }
             }
         }
-        private void RemoveCurrentButton_Click(object sender, EventArgs e)
+        private void RemoveCurrentFolderButton_Click(object sender, EventArgs e)
         {
             var index = FoldersCheckListBox.SelectedIndex;
             if (index > -1)
@@ -99,9 +106,32 @@ namespace UserDocumentControl
 
         private void button2_Click(object sender, EventArgs e)
         {
-            for (int index = 0; index < 15; index++)
+            
+        }
+
+        private void SelectArchiveFolderButton_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new BetterFolderBrowser() {Multiselect = false})
             {
-                ApplicationTraceListener.Instance.Info($"{index,5:D3}");
+                // TODO - make this remember from json setting file
+                dialog.RootFolder = @"C:\OED";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    ArchiveFolderNameTextBox.Text = dialog.SelectedFolder;
+                }
+            }
+        }
+
+        private void SaveZipSettingsButton_Click(object sender, EventArgs e)
+        {
+            if (this.TextBoxesHaveValues())
+            {
+                ConfigurationOperations.Save(new Configuration() 
+                    { ArchiveFolder = ArchiveFolderNameTextBox.Text, ArchiveFileName = ArchiveFileNameTextBox.Text });
+            }
+            else
+            {
+                MessageBox.Show($"Please select a folder and file name");
             }
         }
     }
