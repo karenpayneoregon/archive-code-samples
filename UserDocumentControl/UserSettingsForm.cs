@@ -13,11 +13,11 @@ using FormsLibrary.Extensions;
 
 namespace UserDocumentControl
 {
-    public partial class Form1 : Form
+    public partial class UserSettingsForm : Form
     {
         private List<BackupItem> _includeBackupItemsList = new List<BackupItem>();
 
-        public Form1()
+        public UserSettingsForm()
         {
             InitializeComponent();
 

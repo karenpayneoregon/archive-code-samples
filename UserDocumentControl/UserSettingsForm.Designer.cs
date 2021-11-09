@@ -1,7 +1,7 @@
 ﻿
 namespace UserDocumentControl
 {
-    partial class Form1
+    partial class UserSettingsForm
     {
         /// <summary>
         /// Required designer variable.
