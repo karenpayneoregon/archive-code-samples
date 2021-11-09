@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FormsLibrary.Classes;
 using FormsLibrary.Extensions;
+using LogLibrary;
 
 namespace UserDocumentControl
 {
@@ -19,9 +20,7 @@ namespace UserDocumentControl
         public UserSettingsForm()
         {
             InitializeComponent();
-
             Shown += OnShown;
-
         }
 
         private void OnShown(object sender, EventArgs e)
@@ -37,7 +36,7 @@ namespace UserDocumentControl
         }
 
         /// <summary>
-        /// Accept folders from windows explorer
+        /// Accept folders from windows explorer, disallows duplicates
         /// </summary>
         private void SelectedFoldersCheckListBoxOnDragDrop(object sender, DragEventArgs e)
         {
@@ -49,7 +48,6 @@ namespace UserDocumentControl
 
                 var index = FoldersCheckListBox.FindString(item);
 
-                // Disallow duplicates 
                 if (index == -1)
                 {
                     FoldersCheckListBox.AddAsChecked(item);
@@ -59,25 +57,19 @@ namespace UserDocumentControl
                     FoldersCheckListBox.SelectedIndex = index;
                 }
             }
-
         }
 
-        /// <summary>
-        /// Save user selections
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void SaveSettingsButton_Click(object sender, EventArgs e)
         {
-            var includeList = FoldersCheckListBox.CheckedList();
-            var excludeList = FoldersCheckListBox.NotCheckedList();
-
-            var results = ItemOperations.ProcessCheckBoxItems(includeList, excludeList);
+            var results = ItemOperations.ProcessCheckBoxItems(FoldersCheckListBox.CheckedList(), FoldersCheckListBox.NotCheckedList());
             ItemOperations.SaveItems(results);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private async void button1_Click(object sender, EventArgs e)
+        { 
+            FoldersCheckListBox.Items.Clear();
+            await Task.Delay(1000);
+
             var (hasItems, backupItems) = ItemOperations.ReadItems();
             if (hasItems)
             {
@@ -92,12 +84,6 @@ namespace UserDocumentControl
                 }
             }
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            FoldersCheckListBox.Items.Clear();
-        }
-
         private void RemoveCurrentButton_Click(object sender, EventArgs e)
         {
             var index = FoldersCheckListBox.SelectedIndex;
@@ -108,6 +94,14 @@ namespace UserDocumentControl
                     FoldersCheckListBox.RemoveBackItem(index);
                 }
                 
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            for (int index = 0; index < 15; index++)
+            {
+                ApplicationTraceListener.Instance.Info($"{index,5:D3}");
             }
         }
     }

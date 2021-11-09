@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -84,6 +85,10 @@
     <ProjectReference Include="..\FormsLibrary\FormsLibrary.csproj">
       <Project>{D90714ED-0A2D-4B88-B658-58C4C488E278}</Project>
       <Name>FormsLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogLibrary\LogLibrary.csproj">
+      <Project>{ae6ffe07-b6c3-4c34-a50c-066a57d3caf4}</Project>
+      <Name>LogLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

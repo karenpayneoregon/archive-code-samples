@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D90714ED-0A2D-4B88-B658-58C4C488E278}</ProjectGuid>
+    <ProjectGuid>{AE6FFE07-B6C3-4C34-A50C-066A57D3CAF4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FormsLibrary</RootNamespace>
-    <AssemblyName>FormsLibrary</AssemblyName>
+    <RootNamespace>LogLibrary</RootNamespace>
+    <AssemblyName>LogLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,12 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,27 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\BackupItem.cs" />
-    <Compile Include="Classes\CueBannerTextCode.cs" />
-    <Compile Include="Classes\Dialogs.cs" />
-    <Compile Include="Classes\ItemOperations.cs" />
-    <Compile Include="Extensions\CheckedListBoxExtensions.cs" />
-    <Compile Include="Extensions\ControlExtensions.cs" />
-    <Compile Include="Extensions\GenericExtensions.cs" />
-    <Compile Include="Extensions\TextBoxExtensions.cs" />
+    <Compile Include="ApplicationTraceListener.cs" />
+    <Compile Include="GenericExtensions.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UtilityLibrary\UtilityLibrary.csproj">
-      <Project>{B0F22BB9-261F-4B8A-A0BB-6ABD01D7C3D5}</Project>
-      <Name>UtilityLibrary</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

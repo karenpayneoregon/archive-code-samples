@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserDocumentControl", "User
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowFormsHelpersLibrary", "WindowFormsHelpersLibrary\WindowFormsHelpersLibrary.csproj", "{43F603B0-6671-40D6-A947-87CF6ED8DC84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogLibrary", "LogLibrary\LogLibrary.csproj", "{AE6FFE07-B6C3-4C34-A50C-066A57D3CAF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +80,10 @@ Global
 		{43F603B0-6671-40D6-A947-87CF6ED8DC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43F603B0-6671-40D6-A947-87CF6ED8DC84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43F603B0-6671-40D6-A947-87CF6ED8DC84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE6FFE07-B6C3-4C34-A50C-066A57D3CAF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE6FFE07-B6C3-4C34-A50C-066A57D3CAF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE6FFE07-B6C3-4C34-A50C-066A57D3CAF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE6FFE07-B6C3-4C34-A50C-066A57D3CAF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,6 +99,7 @@ Global
 		{FF2F887D-38CF-40C6-86BC-F2E3D3F7508C} = {3193E819-0758-4B22-84E2-F1819D07A94B}
 		{7822FDB9-64A6-493F-8017-4D9B363B945B} = {3193E819-0758-4B22-84E2-F1819D07A94B}
 		{43F603B0-6671-40D6-A947-87CF6ED8DC84} = {9C2E729C-04C1-4E1B-AB17-1AA07DA696B5}
+		{AE6FFE07-B6C3-4C34-A50C-066A57D3CAF4} = {9C2E729C-04C1-4E1B-AB17-1AA07DA696B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {73069867-B4EA-4151-B76D-60A768908DA0}

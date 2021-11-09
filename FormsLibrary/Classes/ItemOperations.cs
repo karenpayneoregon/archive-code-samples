@@ -47,7 +47,6 @@ namespace FormsLibrary.Classes
             if (source.Count <= 0) return;
             var json = JsonConvert.SerializeObject(source, Formatting.Indented);
             File.WriteAllText(JsonFileName, json);
-
         }
 
         /// <summary>
