@@ -77,6 +77,26 @@ namespace UserDocumentControl
             FoldersCheckListBox.AllowDrop = true;
             FoldersCheckListBox.DragDrop += SelectedFoldersCheckListBoxOnDragDrop;
             FoldersCheckListBox.DragEnter += SelectedFoldersCheckListBoxOnDragEnter;
+
+            LoadFolders();
+        }
+
+        private void LoadFolders()
+        {
+            var (hasItems, list) = ItemOperations.ReadItems();
+            if (hasItems)
+            {
+                for (int index = 0; index < list.Count; index++)
+                {
+                    FoldersCheckListBox.Items.Add(list[index].DirectoryName);
+
+                    FoldersCheckListBox.SetItemCheckState(index, list[index].IncludeFolder ? CheckState.Checked : CheckState.Unchecked);
+                }
+
+                SaveFoldersButton.Enabled = FoldersCheckListBox.Items.Count > 0;
+                RemoveCurrentFolderButton.Enabled = SaveFoldersButton.Enabled;
+                FoldersCheckListBox.SelectedIndex = 0;
+            }
         }
 
         private void SelectedFoldersCheckListBoxOnDragEnter(object sender, DragEventArgs e)
@@ -161,6 +181,12 @@ namespace UserDocumentControl
         private void CreateUniqueZipFileNameButton_Click(object sender, EventArgs e) => ArchiveFileNameTextBox.Text = FileHelpers.UniqueFileName(false);
 
         private void CancelSaveButton_Click(object sender, EventArgs e)
+        {
+            _saveChanges = false;
+            Close();
+        }
+
+        private void CloseFormButton_Click(object sender, EventArgs e)
         {
             _saveChanges = false;
             Close();

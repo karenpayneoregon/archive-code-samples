@@ -47,6 +47,7 @@ namespace UserDocumentControl
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.CloseFormButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -237,11 +238,26 @@ namespace UserDocumentControl
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
+            // CloseFormButton
+            // 
+            this.CloseFormButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CloseFormButton.Image = global::UserDocumentControl.Properties.Resources.Exit_16x;
+            this.CloseFormButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CloseFormButton.Location = new System.Drawing.Point(575, 472);
+            this.CloseFormButton.Name = "CloseFormButton";
+            this.CloseFormButton.Size = new System.Drawing.Size(194, 23);
+            this.CloseFormButton.TabIndex = 15;
+            this.CloseFormButton.Text = "Close";
+            this.toolTip1.SetToolTip(this.CloseFormButton, "Save to configuration file");
+            this.CloseFormButton.UseVisualStyleBackColor = true;
+            this.CloseFormButton.Click += new System.EventHandler(this.CloseFormButton_Click);
+            // 
             // UserSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 488);
+            this.ClientSize = new System.Drawing.Size(782, 507);
+            this.Controls.Add(this.CloseFormButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.RemoveCurrentFolderButton);
@@ -279,6 +295,7 @@ namespace UserDocumentControl
         private System.Windows.Forms.Button CancelSaveButton;
         private System.Windows.Forms.TextBox CommentTextBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button CloseFormButton;
     }
 }
 

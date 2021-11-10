@@ -160,7 +160,7 @@ namespace CreatePasswordedZipFromFolders
 
             try
             {
-                await zipOperations.CreateWithPasswordTask();
+                await zipOperations.CreateWithOptionalPasswordTask();
             }
             finally
             {

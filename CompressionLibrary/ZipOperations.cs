@@ -306,7 +306,7 @@ namespace CompressionLibrary
         /// Create zip file of one or more directories
         /// </summary>
         /// <returns>n/a</returns>
-        public async Task CreateWithPasswordTask()
+        public async Task CreateWithOptionalPasswordTask()
         {
             var fileName = ZipFileName;
 

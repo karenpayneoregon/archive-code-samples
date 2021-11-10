@@ -30,6 +30,9 @@ namespace UserDocumentControl
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ConfigurationButton = new System.Windows.Forms.Button();
+            this.PerformBackupButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.LastBackupDateLabel = new System.Windows.Forms.Label();
             this.ArchiveFolderNameTextBox = new System.Windows.Forms.TextBox();
@@ -38,9 +41,6 @@ namespace UserDocumentControl
             this.label4 = new System.Windows.Forms.Label();
             this.ArchiveFileNameTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.ConfigurationButton = new System.Windows.Forms.Button();
-            this.PerformBackupButton = new System.Windows.Forms.Button();
-            this.CloseButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +54,45 @@ namespace UserDocumentControl
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(695, 46);
             this.panel1.TabIndex = 0;
+            // 
+            // ConfigurationButton
+            // 
+            this.ConfigurationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ConfigurationButton.Image = global::UserDocumentControl.Properties.Resources.ConfigurationEditor_16x;
+            this.ConfigurationButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ConfigurationButton.Location = new System.Drawing.Point(155, 11);
+            this.ConfigurationButton.Name = "ConfigurationButton";
+            this.ConfigurationButton.Size = new System.Drawing.Size(137, 23);
+            this.ConfigurationButton.TabIndex = 12;
+            this.ConfigurationButton.Text = "Configuration";
+            this.ConfigurationButton.UseVisualStyleBackColor = true;
+            this.ConfigurationButton.Click += new System.EventHandler(this.ConfigurationButton_Click);
+            // 
+            // PerformBackupButton
+            // 
+            this.PerformBackupButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PerformBackupButton.Image = global::UserDocumentControl.Properties.Resources.ZipFile_16x;
+            this.PerformBackupButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PerformBackupButton.Location = new System.Drawing.Point(12, 11);
+            this.PerformBackupButton.Name = "PerformBackupButton";
+            this.PerformBackupButton.Size = new System.Drawing.Size(137, 23);
+            this.PerformBackupButton.TabIndex = 11;
+            this.PerformBackupButton.Text = "Perform backup";
+            this.PerformBackupButton.UseVisualStyleBackColor = true;
+            this.PerformBackupButton.Click += new System.EventHandler(this.PerformBackupButton_Click);
+            // 
+            // CloseButton
+            // 
+            this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseButton.Image = global::UserDocumentControl.Properties.Resources.Exit_16x;
+            this.CloseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CloseButton.Location = new System.Drawing.Point(546, 11);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(137, 23);
+            this.CloseButton.TabIndex = 0;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // label1
             // 
@@ -125,44 +164,6 @@ namespace UserDocumentControl
             this.label3.Size = new System.Drawing.Size(88, 13);
             this.label3.TabIndex = 15;
             this.label3.Text = "Archive file name";
-            // 
-            // ConfigurationButton
-            // 
-            this.ConfigurationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ConfigurationButton.Image = global::UserDocumentControl.Properties.Resources.ConfigurationEditor_16x;
-            this.ConfigurationButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ConfigurationButton.Location = new System.Drawing.Point(155, 11);
-            this.ConfigurationButton.Name = "ConfigurationButton";
-            this.ConfigurationButton.Size = new System.Drawing.Size(137, 23);
-            this.ConfigurationButton.TabIndex = 12;
-            this.ConfigurationButton.Text = "Configuration";
-            this.ConfigurationButton.UseVisualStyleBackColor = true;
-            this.ConfigurationButton.Click += new System.EventHandler(this.ConfigurationButton_Click);
-            // 
-            // PerformBackupButton
-            // 
-            this.PerformBackupButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.PerformBackupButton.Image = global::UserDocumentControl.Properties.Resources.ZipFile_16x;
-            this.PerformBackupButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PerformBackupButton.Location = new System.Drawing.Point(12, 11);
-            this.PerformBackupButton.Name = "PerformBackupButton";
-            this.PerformBackupButton.Size = new System.Drawing.Size(137, 23);
-            this.PerformBackupButton.TabIndex = 11;
-            this.PerformBackupButton.Text = "Perform backup";
-            this.PerformBackupButton.UseVisualStyleBackColor = true;
-            // 
-            // CloseButton
-            // 
-            this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseButton.Image = global::UserDocumentControl.Properties.Resources.Exit_16x;
-            this.CloseButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CloseButton.Location = new System.Drawing.Point(546, 11);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(137, 23);
-            this.CloseButton.TabIndex = 0;
-            this.CloseButton.Text = "Close";
-            this.CloseButton.UseVisualStyleBackColor = true;
-            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // MainForm
             // 

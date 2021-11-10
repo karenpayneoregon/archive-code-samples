@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CompressionLibrary;
 using FormsLibrary.Classes;
 
 namespace UserDocumentControl
@@ -24,10 +26,9 @@ namespace UserDocumentControl
 
         private void OnShown(object sender, EventArgs e)
         {
-            _configuration = ConfigurationOperations.Read();
-            LastBackupDateLabel.Text = _configuration.LastBackup == DateTime.MinValue ? "N/A" : $"{_configuration.LastBackup:F}";
-            CommentTextBox.Text = _configuration.ArchiveFileComment;
+            PopulateControlsFromConfigurationFile();
         }
+
 
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -83,7 +84,52 @@ namespace UserDocumentControl
 
         private void FormOnSaveChangesHandler(Configuration sender)
         {
-            Console.WriteLine("Update controls");
+            PopulateControlsFromConfigurationFile();
+        }
+
+        private void PopulateControlsFromConfigurationFile()
+        {
+            _configuration = ConfigurationOperations.Read();
+            LastBackupDateLabel.Text = _configuration.LastBackup == DateTime.MinValue ? "N/A" : $"{_configuration.LastBackup:F}";
+            CommentTextBox.Text = _configuration.ArchiveFileComment;
+            ArchiveFolderNameTextBox.Text = _configuration.ArchiveFolder;
+            ArchiveFileNameTextBox.Text = _configuration.ArchiveFileName;
+        }
+
+        /// <summary>
+        /// Create zip without a password
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void PerformBackupButton_Click(object sender, EventArgs e)
+        {
+
+            var (hasItems, list) = ItemOperations.ReadItems();
+            try
+            {
+                if (hasItems)
+                {
+                    PerformBackupButton.Enabled = false;
+
+                    var includeFolders = list.Where(backItem => backItem.IncludeFolder).ToList();
+
+                    var zipOperations = new ZipOperations
+                    {
+                        AddDirectoryList = includeFolders.Select(x => x.DirectoryName).ToList(),
+                        UsePassword = false,
+                        Password = "",
+                        UseEncryption = false,
+                        ZipFileName = Path.Combine(_configuration.ArchiveFolder, _configuration.ArchiveFileName),
+                        UnZipFolderName = _configuration.ArchiveFolder
+                    };
+
+                    await zipOperations.CreateWithOptionalPasswordTask();
+                }
+            }
+            finally
+            {
+                PerformBackupButton.Enabled = true;
+            }
         }
     }
 }
