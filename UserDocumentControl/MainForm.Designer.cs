@@ -63,7 +63,7 @@ namespace UserDocumentControl
             this.ConfigurationButton.Location = new System.Drawing.Point(155, 11);
             this.ConfigurationButton.Name = "ConfigurationButton";
             this.ConfigurationButton.Size = new System.Drawing.Size(137, 23);
-            this.ConfigurationButton.TabIndex = 12;
+            this.ConfigurationButton.TabIndex = 1;
             this.ConfigurationButton.Text = "Configuration";
             this.ConfigurationButton.UseVisualStyleBackColor = true;
             this.ConfigurationButton.Click += new System.EventHandler(this.ConfigurationButton_Click);
@@ -76,7 +76,7 @@ namespace UserDocumentControl
             this.PerformBackupButton.Location = new System.Drawing.Point(12, 11);
             this.PerformBackupButton.Name = "PerformBackupButton";
             this.PerformBackupButton.Size = new System.Drawing.Size(137, 23);
-            this.PerformBackupButton.TabIndex = 11;
+            this.PerformBackupButton.TabIndex = 0;
             this.PerformBackupButton.Text = "Perform backup";
             this.PerformBackupButton.UseVisualStyleBackColor = true;
             this.PerformBackupButton.Click += new System.EventHandler(this.PerformBackupButton_Click);
@@ -89,7 +89,7 @@ namespace UserDocumentControl
             this.CloseButton.Location = new System.Drawing.Point(546, 11);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(137, 23);
-            this.CloseButton.TabIndex = 0;
+            this.CloseButton.TabIndex = 2;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
@@ -119,7 +119,7 @@ namespace UserDocumentControl
             this.ArchiveFolderNameTextBox.Name = "ArchiveFolderNameTextBox";
             this.ArchiveFolderNameTextBox.ReadOnly = true;
             this.ArchiveFolderNameTextBox.Size = new System.Drawing.Size(664, 20);
-            this.ArchiveFolderNameTextBox.TabIndex = 4;
+            this.ArchiveFolderNameTextBox.TabIndex = 0;
             // 
             // label2
             // 
@@ -136,7 +136,7 @@ namespace UserDocumentControl
             this.CommentTextBox.Location = new System.Drawing.Point(19, 156);
             this.CommentTextBox.Name = "CommentTextBox";
             this.CommentTextBox.Size = new System.Drawing.Size(288, 20);
-            this.CommentTextBox.TabIndex = 18;
+            this.CommentTextBox.TabIndex = 2;
             // 
             // label4
             // 
@@ -153,7 +153,7 @@ namespace UserDocumentControl
             this.ArchiveFileNameTextBox.Location = new System.Drawing.Point(19, 106);
             this.ArchiveFileNameTextBox.Name = "ArchiveFileNameTextBox";
             this.ArchiveFileNameTextBox.Size = new System.Drawing.Size(288, 20);
-            this.ArchiveFileNameTextBox.TabIndex = 16;
+            this.ArchiveFileNameTextBox.TabIndex = 1;
             this.ArchiveFileNameTextBox.Text = "Backups.zip";
             // 
             // label3

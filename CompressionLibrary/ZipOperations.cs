@@ -415,6 +415,14 @@ namespace CompressionLibrary
                         {
                             // add unique temporary directory containing multiple folders
                             zip.AddDirectory(_uniqueTempDirectory);
+
+                            foreach (var entry in zip.Entries)
+                            {
+                                if (!string.IsNullOrWhiteSpace(zip.Comment))
+                                {
+                                    entry.Comment = zip.Comment;
+                                }
+                            }
                             zip.Save(ZipFileName);
 
                             // remove temporary directory

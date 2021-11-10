@@ -71,7 +71,7 @@ namespace UserDocumentControl
             this.FoldersCheckListBox.Location = new System.Drawing.Point(12, 32);
             this.FoldersCheckListBox.Name = "FoldersCheckListBox";
             this.FoldersCheckListBox.Size = new System.Drawing.Size(758, 154);
-            this.FoldersCheckListBox.TabIndex = 2;
+            this.FoldersCheckListBox.TabIndex = 0;
             // 
             // toolTip1
             // 
@@ -83,7 +83,7 @@ namespace UserDocumentControl
             this.ArchiveFileNameTextBox.Location = new System.Drawing.Point(6, 99);
             this.ArchiveFileNameTextBox.Name = "ArchiveFileNameTextBox";
             this.ArchiveFileNameTextBox.Size = new System.Drawing.Size(194, 20);
-            this.ArchiveFileNameTextBox.TabIndex = 4;
+            this.ArchiveFileNameTextBox.TabIndex = 2;
             this.ArchiveFileNameTextBox.Text = "Backups.zip";
             this.toolTip1.SetToolTip(this.ArchiveFileNameTextBox, "Name of .zip file to add directories to into archive folder");
             // 
@@ -94,7 +94,7 @@ namespace UserDocumentControl
             this.ArchiveFolderNameTextBox.Name = "ArchiveFolderNameTextBox";
             this.ArchiveFolderNameTextBox.ReadOnly = true;
             this.ArchiveFolderNameTextBox.Size = new System.Drawing.Size(709, 20);
-            this.ArchiveFolderNameTextBox.TabIndex = 1;
+            this.ArchiveFolderNameTextBox.TabIndex = 0;
             this.toolTip1.SetToolTip(this.ArchiveFolderNameTextBox, "Location of backup .zip file");
             // 
             // CancelSaveButton
@@ -105,7 +105,7 @@ namespace UserDocumentControl
             this.CancelSaveButton.Location = new System.Drawing.Point(206, 183);
             this.CancelSaveButton.Name = "CancelSaveButton";
             this.CancelSaveButton.Size = new System.Drawing.Size(194, 23);
-            this.CancelSaveButton.TabIndex = 12;
+            this.CancelSaveButton.TabIndex = 6;
             this.CancelSaveButton.Text = "Cancel Changes";
             this.toolTip1.SetToolTip(this.CancelSaveButton, "Save to configuration file");
             this.CancelSaveButton.UseVisualStyleBackColor = true;
@@ -117,7 +117,7 @@ namespace UserDocumentControl
             this.CreateUniqueZipFileNameButton.Location = new System.Drawing.Point(206, 97);
             this.CreateUniqueZipFileNameButton.Name = "CreateUniqueZipFileNameButton";
             this.CreateUniqueZipFileNameButton.Size = new System.Drawing.Size(26, 23);
-            this.CreateUniqueZipFileNameButton.TabIndex = 11;
+            this.CreateUniqueZipFileNameButton.TabIndex = 3;
             this.toolTip1.SetToolTip(this.CreateUniqueZipFileNameButton, "Generate a file name for you");
             this.CreateUniqueZipFileNameButton.UseVisualStyleBackColor = true;
             this.CreateUniqueZipFileNameButton.Click += new System.EventHandler(this.CreateUniqueZipFileNameButton_Click);
@@ -130,7 +130,7 @@ namespace UserDocumentControl
             this.SaveZipSettingsButton.Location = new System.Drawing.Point(6, 183);
             this.SaveZipSettingsButton.Name = "SaveZipSettingsButton";
             this.SaveZipSettingsButton.Size = new System.Drawing.Size(194, 23);
-            this.SaveZipSettingsButton.TabIndex = 10;
+            this.SaveZipSettingsButton.TabIndex = 5;
             this.SaveZipSettingsButton.Text = "Save zip settings";
             this.toolTip1.SetToolTip(this.SaveZipSettingsButton, "Save to configuration file");
             this.SaveZipSettingsButton.UseVisualStyleBackColor = true;
@@ -142,7 +142,7 @@ namespace UserDocumentControl
             this.SelectArchiveFolderButton.Location = new System.Drawing.Point(721, 42);
             this.SelectArchiveFolderButton.Name = "SelectArchiveFolderButton";
             this.SelectArchiveFolderButton.Size = new System.Drawing.Size(25, 23);
-            this.SelectArchiveFolderButton.TabIndex = 2;
+            this.SelectArchiveFolderButton.TabIndex = 1;
             this.toolTip1.SetToolTip(this.SelectArchiveFolderButton, "Select folder");
             this.SelectArchiveFolderButton.UseVisualStyleBackColor = true;
             this.SelectArchiveFolderButton.Click += new System.EventHandler(this.SelectArchiveFolderButton_Click);
@@ -155,7 +155,7 @@ namespace UserDocumentControl
             this.RemoveCurrentFolderButton.Location = new System.Drawing.Point(236, 203);
             this.RemoveCurrentFolderButton.Name = "RemoveCurrentFolderButton";
             this.RemoveCurrentFolderButton.Size = new System.Drawing.Size(194, 23);
-            this.RemoveCurrentFolderButton.TabIndex = 7;
+            this.RemoveCurrentFolderButton.TabIndex = 2;
             this.RemoveCurrentFolderButton.Text = "Remove current folder";
             this.toolTip1.SetToolTip(this.RemoveCurrentFolderButton, "Remove current item from folder list");
             this.RemoveCurrentFolderButton.UseVisualStyleBackColor = true;
@@ -168,7 +168,7 @@ namespace UserDocumentControl
             this.SaveFoldersButton.Location = new System.Drawing.Point(25, 203);
             this.SaveFoldersButton.Name = "SaveFoldersButton";
             this.SaveFoldersButton.Size = new System.Drawing.Size(194, 23);
-            this.SaveFoldersButton.TabIndex = 4;
+            this.SaveFoldersButton.TabIndex = 1;
             this.SaveFoldersButton.Text = "Save folders";
             this.toolTip1.SetToolTip(this.SaveFoldersButton, "Save to configuration file");
             this.SaveFoldersButton.UseVisualStyleBackColor = true;
@@ -179,7 +179,7 @@ namespace UserDocumentControl
             this.CommentTextBox.Location = new System.Drawing.Point(6, 149);
             this.CommentTextBox.Name = "CommentTextBox";
             this.CommentTextBox.Size = new System.Drawing.Size(194, 20);
-            this.CommentTextBox.TabIndex = 14;
+            this.CommentTextBox.TabIndex = 4;
             this.toolTip1.SetToolTip(this.CommentTextBox, "Name of .zip file to add directories to into archive folder");
             // 
             // groupBox1
@@ -246,7 +246,7 @@ namespace UserDocumentControl
             this.CloseFormButton.Location = new System.Drawing.Point(575, 472);
             this.CloseFormButton.Name = "CloseFormButton";
             this.CloseFormButton.Size = new System.Drawing.Size(194, 23);
-            this.CloseFormButton.TabIndex = 15;
+            this.CloseFormButton.TabIndex = 3;
             this.CloseFormButton.Text = "Close";
             this.toolTip1.SetToolTip(this.CloseFormButton, "Save to configuration file");
             this.CloseFormButton.UseVisualStyleBackColor = true;

@@ -33,11 +33,7 @@ namespace UserDocumentControl
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            //Configuration configuration = new Configuration() { ArchiveFileName = @"C:\OED\Backup.zip", LastBackup = DateTime.Now };
-            //ConfigurationOperations.Save(configuration);
-
-            
-
+            Close();
         }
 
 
@@ -119,17 +115,32 @@ namespace UserDocumentControl
                         UsePassword = false,
                         Password = "",
                         UseEncryption = false,
-                        ZipFileName = Path.Combine(_configuration.ArchiveFolder, _configuration.ArchiveFileName),
+                        ZipFileName = Path.Combine(_configuration.ArchiveFolder, _configuration.ArchiveFileName), 
+                        ZipFileComment = "Back docs",
                         UnZipFolderName = _configuration.ArchiveFolder
                     };
 
                     await zipOperations.CreateWithOptionalPasswordTask();
+
+                    _configuration = ConfigurationOperations.Read();
+                    _configuration.LastBackup = DateTime.Now;
+                    ConfigurationOperations.Save(_configuration);
+                    LastBackupDateLabel.Text = _configuration.LastBackup.ToLongDateString();
+
                 }
             }
             finally
             {
                 PerformBackupButton.Enabled = true;
             }
+        }
+        //var ops = new ZipOperations();
+        //var results = ops.ViewZipFileContents(@"C:\OED\DumpZipFiles\2021-10-11--13-15-34-1534.zip");
+        //Console.WriteLine();
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
