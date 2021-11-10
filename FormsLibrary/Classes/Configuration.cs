@@ -13,9 +13,13 @@ namespace FormsLibrary.Classes
         /// Archive (.zip) file name
         /// </summary>
         public string ArchiveFileName { get; set; }
+        public string ArchiveFileComment { get; set; }
         /// <summary>
         /// Last date/time <see cref="ArchiveFileName"/> was created
         /// </summary>
         public DateTime LastBackup { get; set; }
+        public string LastFolderBrowsed { get; set; }
+        public bool LastFolderBrowsedIsValid => !string.IsNullOrWhiteSpace(LastFolderBrowsed);
+        public bool ArchiveFileNameIsValid => !string.IsNullOrWhiteSpace(ArchiveFileName);
     }
 }

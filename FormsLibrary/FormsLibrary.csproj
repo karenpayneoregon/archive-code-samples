@@ -49,6 +49,7 @@
     <Compile Include="Classes\BackupItem.cs" />
     <Compile Include="Classes\CueBannerTextCode.cs" />
     <Compile Include="Classes\Dialogs.cs" />
+    <Compile Include="Classes\EnvironmentHelpers.cs" />
     <Compile Include="Classes\ItemOperations.cs" />
     <Compile Include="Classes\ConfigurationOperations.cs" />
     <Compile Include="Extensions\CheckedListBoxExtensions.cs" />

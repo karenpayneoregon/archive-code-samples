@@ -95,6 +95,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CompressionLibrary\CompressionLibrary.csproj">
+      <Project>{DA84ECA8-6085-46A6-A426-4BB3F5485278}</Project>
+      <Name>CompressionLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FormsLibrary\FormsLibrary.csproj">
       <Project>{D90714ED-0A2D-4B88-B658-58C4C488E278}</Project>
       <Name>FormsLibrary</Name>
@@ -106,6 +110,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.md" />
+    <None Include="Resources\Cancel_16x.png" />
+    <None Include="Resources\BinaryFile_16x.png" />
     <None Include="Resources\Folder_16xSM.png" />
     <None Include="Resources\Exit_16x.png" />
     <None Include="Resources\Save_16x.png" />

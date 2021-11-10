@@ -8,21 +8,56 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CompressionLibrary;
 using FormsLibrary.Classes;
 using FormsLibrary.Extensions;
-using LogLibrary;
 using WK.Libraries.BetterFolderBrowserNS;
 
 namespace UserDocumentControl
 {
     public partial class UserSettingsForm : Form
     {
+        private readonly Configuration _configuration;
+        private bool _saveChanges = true;
 
         public UserSettingsForm()
         {
             InitializeComponent();
             Shown += OnShown;
             ArchiveFileNameTextBox.Leave += ArchiveFileNameTextBoxOnLeave;
+            SaveFoldersButton.DataBindings.Add("Enabled", RemoveCurrentFolderButton, "Enabled");
+
+            _configuration = ConfigurationOperations.Read();
+
+            ArchiveFolderNameTextBox.Text = _configuration.LastFolderBrowsedIsValid ? 
+                _configuration.LastFolderBrowsed : 
+                EnvironmentHelpers.DocumentFolder();
+
+            if (_configuration.ArchiveFileNameIsValid)
+            {
+                ArchiveFileNameTextBox.Text = _configuration.ArchiveFileName;
+            }
+
+            CommentTextBox.Text = _configuration.ArchiveFileComment;
+
+            FormClosing += OnFormClosing;
+        }
+
+        private void OnFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_saveChanges == false)
+            {
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(ArchiveFileNameTextBox.Text))
+            {
+                _configuration.ArchiveFileName = ArchiveFileNameTextBox.Text;
+            }
+
+            _configuration.ArchiveFileComment = CommentTextBox.Text;
+
+            ConfigurationOperations.Save(_configuration);
         }
 
         private void ArchiveFileNameTextBoxOnLeave(object sender, EventArgs e)
@@ -64,6 +99,10 @@ namespace UserDocumentControl
                     FoldersCheckListBox.SelectedIndex = index;
                 }
             }
+
+            RemoveCurrentFolderButton.Enabled = FoldersCheckListBox.Items.Count > 0;
+
+            
         }
 
         private void SaveFoldersButton_Click(object sender, EventArgs e)
@@ -71,53 +110,30 @@ namespace UserDocumentControl
             var results = ItemOperations.ProcessCheckBoxItems(FoldersCheckListBox.CheckedList(), FoldersCheckListBox.NotCheckedList());
             ItemOperations.SaveItems(results);
         }
-
-        private async void button1_Click(object sender, EventArgs e)
-        { 
-            FoldersCheckListBox.Items.Clear();
-            await Task.Delay(1000);
-
-            var (hasItems, backupItems) = ItemOperations.ReadItems();
-            if (hasItems)
-            {
-                FoldersCheckListBox.Items.Clear();
-
-                for (int index = 0; index < backupItems.Count; index++)
-                {
-                    FoldersCheckListBox.Items.Add(backupItems[index].DirectoryName);
-                    FoldersCheckListBox.SetItemCheckState(index, backupItems[index].IncludeFolder ?
-                        CheckState.Checked :
-                        CheckState.Unchecked);
-                }
-            }
-        }
         private void RemoveCurrentFolderButton_Click(object sender, EventArgs e)
         {
             var index = FoldersCheckListBox.SelectedIndex;
-            if (index > -1)
+            if (index <= -1) return;
+            if (Dialogs.Question($"Remove {FoldersCheckListBox.Text}"))
             {
-                if (Dialogs.Question($"Remove {FoldersCheckListBox.Text}"))
-                {
-                    FoldersCheckListBox.RemoveBackItem(index);
-                }
-                
+                FoldersCheckListBox.RemoveBackItem(index);
             }
+            RemoveCurrentFolderButton.Enabled = FoldersCheckListBox.Items.Count > 0;
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void SelectArchiveFolderButton_Click(object sender, EventArgs e)
         {
             using (var dialog = new BetterFolderBrowser() {Multiselect = false})
             {
-                // TODO - make this remember from json setting file
-                dialog.RootFolder = @"C:\OED";
+                if (string.IsNullOrWhiteSpace(_configuration.LastFolderBrowsed))
+                {
+                    _configuration.LastFolderBrowsed = "C:\\";
+                }
+
+                dialog.RootFolder = _configuration.LastFolderBrowsed;
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     ArchiveFolderNameTextBox.Text = dialog.SelectedFolder;
+                    _configuration.LastFolderBrowsed = dialog.SelectedFolder;
                 }
             }
         }
@@ -126,13 +142,20 @@ namespace UserDocumentControl
         {
             if (this.TextBoxesHaveValues())
             {
-                ConfigurationOperations.Save(new Configuration() 
-                    { ArchiveFolder = ArchiveFolderNameTextBox.Text, ArchiveFileName = ArchiveFileNameTextBox.Text });
+                ConfigurationOperations.Save(new Configuration() { ArchiveFolder = ArchiveFolderNameTextBox.Text, ArchiveFileName = ArchiveFileNameTextBox.Text });
             }
             else
             {
-                MessageBox.Show($"Please select a folder and file name");
+                MessageBox.Show($@"Please select a folder and file name");
             }
+        }
+
+        private void CreateUniqueZipFileNameButton_Click(object sender, EventArgs e) => ArchiveFileNameTextBox.Text = FileHelpers.UniqueFileName(false);
+
+        private void CancelSaveButton_Click(object sender, EventArgs e)
+        {
+            _saveChanges = false;
+            Close();
         }
     }
 }

@@ -277,6 +277,8 @@ namespace FileOperationsTest
 
             Assert.AreEqual($@"C:\Users\{userName}\AppData\Local\MICROS~1\MICROS~2\SQLEXP~1", 
                 PathHelpers.GetShortPath(longPath));
+
+
         }
 
     }
