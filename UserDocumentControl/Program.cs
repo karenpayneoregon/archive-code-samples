@@ -29,7 +29,7 @@ namespace UserDocumentControl
                 ApplicationTraceListener.Instance.Info("Started");
             }
 
-            Application.Run(new UserSettingsForm());
+            Application.Run(new MainForm());
         }
 
         private static void Application_ApplicationExit(object sender, EventArgs e)

@@ -110,6 +110,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.md" />
+    <None Include="Resources\ConfigurationEditor_16x.png" />
+    <None Include="Resources\ZipFile_16x.png" />
     <None Include="Resources\Cancel_16x.png" />
     <None Include="Resources\BinaryFile_16x.png" />
     <None Include="Resources\Folder_16xSM.png" />

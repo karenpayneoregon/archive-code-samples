@@ -20,10 +20,15 @@ namespace UserDocumentControl
         private readonly Configuration _configuration;
         private bool _saveChanges = true;
 
+        public delegate void OnSaveChanges(Configuration sender);
+        public event OnSaveChanges SaveChangesHandler;
+
         public UserSettingsForm()
         {
             InitializeComponent();
+            
             Shown += OnShown;
+
             ArchiveFileNameTextBox.Leave += ArchiveFileNameTextBoxOnLeave;
             SaveFoldersButton.DataBindings.Add("Enabled", RemoveCurrentFolderButton, "Enabled");
 
@@ -58,6 +63,8 @@ namespace UserDocumentControl
             _configuration.ArchiveFileComment = CommentTextBox.Text;
 
             ConfigurationOperations.Save(_configuration);
+
+            SaveChangesHandler?.Invoke(_configuration);
         }
 
         private void ArchiveFileNameTextBoxOnLeave(object sender, EventArgs e)
@@ -143,6 +150,7 @@ namespace UserDocumentControl
             if (this.TextBoxesHaveValues())
             {
                 ConfigurationOperations.Save(new Configuration() { ArchiveFolder = ArchiveFolderNameTextBox.Text, ArchiveFileName = ArchiveFileNameTextBox.Text });
+                Close();
             }
             else
             {

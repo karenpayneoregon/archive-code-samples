@@ -33,20 +33,20 @@ namespace UserDocumentControl
             this.label1 = new System.Windows.Forms.Label();
             this.FoldersCheckListBox = new System.Windows.Forms.CheckedListBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ArchiveFileNameTextBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.ArchiveFolderNameTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.CancelSaveButton = new System.Windows.Forms.Button();
             this.CreateUniqueZipFileNameButton = new System.Windows.Forms.Button();
             this.SaveZipSettingsButton = new System.Windows.Forms.Button();
             this.SelectArchiveFolderButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.RemoveCurrentFolderButton = new System.Windows.Forms.Button();
             this.SaveFoldersButton = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.CommentTextBox = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -77,25 +77,6 @@ namespace UserDocumentControl
             this.toolTip1.IsBalloon = true;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.CommentTextBox);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.CancelSaveButton);
-            this.groupBox1.Controls.Add(this.CreateUniqueZipFileNameButton);
-            this.groupBox1.Controls.Add(this.SaveZipSettingsButton);
-            this.groupBox1.Controls.Add(this.ArchiveFileNameTextBox);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.SelectArchiveFolderButton);
-            this.groupBox1.Controls.Add(this.ArchiveFolderNameTextBox);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 246);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(757, 216);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Zip settings";
-            // 
             // ArchiveFileNameTextBox
             // 
             this.ArchiveFileNameTextBox.Location = new System.Drawing.Point(6, 99);
@@ -104,15 +85,6 @@ namespace UserDocumentControl
             this.ArchiveFileNameTextBox.TabIndex = 4;
             this.ArchiveFileNameTextBox.Text = "Backups.zip";
             this.toolTip1.SetToolTip(this.ArchiveFileNameTextBox, "Name of .zip file to add directories to into archive folder");
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 83);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(185, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Archive file name (e.g. MyBackup.zip)";
             // 
             // ArchiveFolderNameTextBox
             // 
@@ -124,21 +96,12 @@ namespace UserDocumentControl
             this.ArchiveFolderNameTextBox.TabIndex = 1;
             this.toolTip1.SetToolTip(this.ArchiveFolderNameTextBox, "Location of backup .zip file");
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Archive folder";
-            // 
             // CancelSaveButton
             // 
             this.CancelSaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CancelSaveButton.Image = global::UserDocumentControl.Properties.Resources.Cancel_16x;
             this.CancelSaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CancelSaveButton.Location = new System.Drawing.Point(206, 187);
+            this.CancelSaveButton.Location = new System.Drawing.Point(206, 183);
             this.CancelSaveButton.Name = "CancelSaveButton";
             this.CancelSaveButton.Size = new System.Drawing.Size(194, 23);
             this.CancelSaveButton.TabIndex = 12;
@@ -163,7 +126,7 @@ namespace UserDocumentControl
             this.SaveZipSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SaveZipSettingsButton.Image = global::UserDocumentControl.Properties.Resources.Save_16x;
             this.SaveZipSettingsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SaveZipSettingsButton.Location = new System.Drawing.Point(6, 187);
+            this.SaveZipSettingsButton.Location = new System.Drawing.Point(6, 183);
             this.SaveZipSettingsButton.Name = "SaveZipSettingsButton";
             this.SaveZipSettingsButton.Size = new System.Drawing.Size(194, 23);
             this.SaveZipSettingsButton.TabIndex = 10;
@@ -182,16 +145,6 @@ namespace UserDocumentControl
             this.toolTip1.SetToolTip(this.SelectArchiveFolderButton, "Select folder");
             this.SelectArchiveFolderButton.UseVisualStyleBackColor = true;
             this.SelectArchiveFolderButton.Click += new System.EventHandler(this.SelectArchiveFolderButton_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::UserDocumentControl.Properties.Resources.FolderDrop;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
             // 
             // RemoveCurrentFolderButton
             // 
@@ -220,6 +173,33 @@ namespace UserDocumentControl
             this.SaveFoldersButton.UseVisualStyleBackColor = true;
             this.SaveFoldersButton.Click += new System.EventHandler(this.SaveFoldersButton_Click);
             // 
+            // CommentTextBox
+            // 
+            this.CommentTextBox.Location = new System.Drawing.Point(6, 149);
+            this.CommentTextBox.Name = "CommentTextBox";
+            this.CommentTextBox.Size = new System.Drawing.Size(194, 20);
+            this.CommentTextBox.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.CommentTextBox, "Name of .zip file to add directories to into archive folder");
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.CommentTextBox);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.CancelSaveButton);
+            this.groupBox1.Controls.Add(this.CreateUniqueZipFileNameButton);
+            this.groupBox1.Controls.Add(this.SaveZipSettingsButton);
+            this.groupBox1.Controls.Add(this.ArchiveFileNameTextBox);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.SelectArchiveFolderButton);
+            this.groupBox1.Controls.Add(this.ArchiveFolderNameTextBox);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(12, 246);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(757, 216);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Zip settings";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -229,13 +209,33 @@ namespace UserDocumentControl
             this.label4.TabIndex = 13;
             this.label4.Text = "Archive file comment";
             // 
-            // CommentTextBox
+            // label3
             // 
-            this.CommentTextBox.Location = new System.Drawing.Point(6, 149);
-            this.CommentTextBox.Name = "CommentTextBox";
-            this.CommentTextBox.Size = new System.Drawing.Size(194, 20);
-            this.CommentTextBox.TabIndex = 14;
-            this.toolTip1.SetToolTip(this.CommentTextBox, "Name of .zip file to add directories to into archive folder");
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 83);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(185, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Archive file name (e.g. MyBackup.zip)";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Archive folder";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::UserDocumentControl.Properties.Resources.FolderDrop;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // UserSettingsForm
             // 

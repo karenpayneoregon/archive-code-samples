@@ -83,6 +83,16 @@ namespace UserDocumentControl.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ConfigurationEditor_16x {
+            get {
+                object obj = ResourceManager.GetObject("ConfigurationEditor_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DeleteFolder_16x {
             get {
                 object obj = ResourceManager.GetObject("DeleteFolder_16x", resourceCulture);
@@ -126,6 +136,16 @@ namespace UserDocumentControl.Properties {
         internal static System.Drawing.Bitmap Save_16x {
             get {
                 object obj = ResourceManager.GetObject("Save_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ZipFile_16x {
+            get {
+                object obj = ResourceManager.GetObject("ZipFile_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
