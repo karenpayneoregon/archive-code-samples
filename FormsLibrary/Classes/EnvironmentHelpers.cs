@@ -55,6 +55,9 @@ namespace FormsLibrary.Classes
         /// Determine if .NET Framework or .NET Core Framework at runtime
         /// </summary>
         /// <returns>true if core, false if classic framework</returns>
+        /// <remarks>
+        /// Other options are reading windows registry but not all users have read permissions to the registry
+        /// </remarks>
         public static bool IsNetCore()
         {
             var value = Assembly.GetEntryAssembly()?.GetCustomAttribute<TargetFrameworkAttribute>()?.FrameworkName.Contains("Core");

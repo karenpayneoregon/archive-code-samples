@@ -344,6 +344,55 @@ Optional, wrap in a try-catch, return a bool or (bool,Exception) named Value Tup
 
 :gear: [Command-line tool](https://github.com/haf/DotNetZip.Semverd/tree/master/src/Tools/ConvertZipToSfx) that creates a self-extracting Zip archive, given a standard zip archive.
 
+## Complete create archive
+
+The project UserDocumentControl is an example for creating archive files where
+
+- Archive folder is stored in a json file and restored when the application runs.
+- Archive file name is stored in a json file and restore when the appliation runs
+  - Provies an option to enter a file name or allows the application to generate an archive file name which is in the format of `YYYY-DD-MM--HH-MM-SS-MS.zip`  example 2021-10-11--13-15-34-1534.zip
+- Provides drop folders from Windows Explorer
+- Basic logging which currently is in Program.cs and can be placed in any code using the following singleton class `LogLibrary.ApplicationTraceListener`
+
+**Configuration file** - configuration.json in the application folder
+
+```json
+{
+  "ArchiveFolder": "C:\\OED\\DumpZipFiles",
+  "ArchiveFileName": "2021-11-11--03-25-01-251.zip",
+  "ArchiveFileComment": "For backing up some docs",
+  "LastBackup": "2021-11-10T13:17:24.2099736-08:00",
+  "LastFolderBrowsed": "C:\\OED",
+  "LastFolderBrowsedIsValid": true,
+  "ArchiveFileNameIsValid": true
+}
+``` 
+
+**Folder selections** FolderSelections.json  in the application folder. Note `ShortName` property is provided in the event the folder is very long and may need to be used where a method has issues with long names and/or spaces in the folder name.
+
+```json
+[
+  {
+    "IncludeFolder": true,
+    "DirectoryName": "C:\\Users\\paynek\\Documents\\Fiddler2",
+    "ShortName": "C:\\Users\\paynek\\DOCUME~1\\Fiddler2"
+  },
+  {
+    "IncludeFolder": true,
+    "DirectoryName": "C:\\Users\\paynek\\Documents\\GeoLocation",
+    "ShortName": "C:\\Users\\paynek\\DOCUME~1\\GEOLOC~1"
+  },
+  {
+    "IncludeFolder": true,
+    "DirectoryName": "C:\\Users\\paynek\\Documents\\Git",
+    "ShortName": "C:\\Users\\paynek\\DOCUME~1\\Git"
+  }
+]
+```
+
+
+![image](assets/UserDocumentControlWindows.png)
+
 ## Diving in extracting from archive file
 
 The following screenshot provides a method to get all fiiles in an achive file, indicate if an entry is a file or folder, last modified, size and ratio.
@@ -909,7 +958,7 @@ Take note of MainTest.cs under the Base folder, [Initialization method](https://
 
 # Telerik code samples
 
-This library has powerful features but lacks events which is one reason DotNetZip shines,
+This library has powerful features but lacks events which is one reason DotNetZip shines. Since this is a third party paid for library this project is in the solution folder but not part of the solution. The best way to explore code is open this repository by typing <kbd>.</kbd> then traverse to the code using Visual Studio code web edition.
 
 Create an archive with password
 
@@ -1059,7 +1108,7 @@ namespace TelerikZipCodeSamples
 }
 ```
 
-# UserDocumentControl project
+
 
 
 
