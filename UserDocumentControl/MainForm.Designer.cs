@@ -29,6 +29,7 @@ namespace UserDocumentControl
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ConfigurationButton = new System.Windows.Forms.Button();
             this.PerformBackupButton = new System.Windows.Forms.Button();
@@ -41,6 +42,8 @@ namespace UserDocumentControl
             this.label4 = new System.Windows.Forms.Label();
             this.ArchiveFileNameTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.OpenArchiveFolderButton = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,7 +121,7 @@ namespace UserDocumentControl
             this.ArchiveFolderNameTextBox.Location = new System.Drawing.Point(19, 53);
             this.ArchiveFolderNameTextBox.Name = "ArchiveFolderNameTextBox";
             this.ArchiveFolderNameTextBox.ReadOnly = true;
-            this.ArchiveFolderNameTextBox.Size = new System.Drawing.Size(664, 20);
+            this.ArchiveFolderNameTextBox.Size = new System.Drawing.Size(633, 20);
             this.ArchiveFolderNameTextBox.TabIndex = 0;
             // 
             // label2
@@ -165,11 +168,23 @@ namespace UserDocumentControl
             this.label3.TabIndex = 15;
             this.label3.Text = "Archive file name";
             // 
+            // OpenArchiveFolderButton
+            // 
+            this.OpenArchiveFolderButton.Image = global::UserDocumentControl.Properties.Resources.Folder_16xSM;
+            this.OpenArchiveFolderButton.Location = new System.Drawing.Point(658, 53);
+            this.OpenArchiveFolderButton.Name = "OpenArchiveFolderButton";
+            this.OpenArchiveFolderButton.Size = new System.Drawing.Size(25, 23);
+            this.OpenArchiveFolderButton.TabIndex = 18;
+            this.toolTip1.SetToolTip(this.OpenArchiveFolderButton, "Open folder with Windows Explorer");
+            this.OpenArchiveFolderButton.UseVisualStyleBackColor = true;
+            this.OpenArchiveFolderButton.Click += new System.EventHandler(this.OpenArchiveFolderButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 253);
+            this.Controls.Add(this.OpenArchiveFolderButton);
             this.Controls.Add(this.CommentTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.ArchiveFileNameTextBox);
@@ -203,5 +218,7 @@ namespace UserDocumentControl
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button PerformBackupButton;
         private System.Windows.Forms.Button ConfigurationButton;
+        private System.Windows.Forms.Button OpenArchiveFolderButton;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

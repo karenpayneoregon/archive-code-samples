@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,7 +23,6 @@ namespace UserDocumentControl
         {
             InitializeComponent();
 ;           Shown += OnShown;
-
         }
 
         private void OnShown(object sender, EventArgs e)
@@ -29,14 +30,11 @@ namespace UserDocumentControl
             PopulateControlsFromConfigurationFile();
         }
 
-
-
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-
+        
         #region Snap to edge
 
         private const int SnapDist = 100;
@@ -103,31 +101,28 @@ namespace UserDocumentControl
             var (hasItems, list) = ItemOperations.ReadItems();
             try
             {
-                if (hasItems)
+                if (!hasItems) return;
+                PerformBackupButton.Enabled = false;
+
+                var includeFolders = list.Where(backItem => backItem.IncludeFolder).ToList();
+
+                var zipOperations = new ZipOperations
                 {
-                    PerformBackupButton.Enabled = false;
+                    AddDirectoryList = includeFolders.Select(x => x.DirectoryName).ToList(),
+                    UsePassword = false,
+                    Password = "",
+                    UseEncryption = false,
+                    ZipFileName = Path.Combine(_configuration.ArchiveFolder, _configuration.ArchiveFileName), 
+                    ZipFileComment = "Back docs",
+                    UnZipFolderName = _configuration.ArchiveFolder
+                };
 
-                    var includeFolders = list.Where(backItem => backItem.IncludeFolder).ToList();
+                await zipOperations.CreateWithOptionalPasswordTask();
 
-                    var zipOperations = new ZipOperations
-                    {
-                        AddDirectoryList = includeFolders.Select(x => x.DirectoryName).ToList(),
-                        UsePassword = false,
-                        Password = "",
-                        UseEncryption = false,
-                        ZipFileName = Path.Combine(_configuration.ArchiveFolder, _configuration.ArchiveFileName), 
-                        ZipFileComment = "Back docs",
-                        UnZipFolderName = _configuration.ArchiveFolder
-                    };
-
-                    await zipOperations.CreateWithOptionalPasswordTask();
-
-                    _configuration = ConfigurationOperations.Read();
-                    _configuration.LastBackup = DateTime.Now;
-                    ConfigurationOperations.Save(_configuration);
-                    LastBackupDateLabel.Text = _configuration.LastBackup.ToLongDateString();
-
-                }
+                _configuration = ConfigurationOperations.Read();
+                _configuration.LastBackup = DateTime.Now;
+                ConfigurationOperations.Save(_configuration);
+                LastBackupDateLabel.Text = _configuration.LastBackup.ToLongDateString();
             }
             finally
             {
@@ -137,9 +132,9 @@ namespace UserDocumentControl
         //var ops = new ZipOperations();
         //var results = ops.ViewZipFileContents(@"C:\OED\DumpZipFiles\2021-10-11--13-15-34-1534.zip");
         //Console.WriteLine();
-
-        private void button1_Click(object sender, EventArgs e)
+        private void OpenArchiveFolderButton_Click(object sender, EventArgs e)
         {
+            EnvironmentHelpers.OpenWithExplorer(ArchiveFolderNameTextBox.Text);
 
         }
     }

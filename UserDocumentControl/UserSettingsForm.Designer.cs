@@ -42,12 +42,12 @@ namespace UserDocumentControl
             this.RemoveCurrentFolderButton = new System.Windows.Forms.Button();
             this.SaveFoldersButton = new System.Windows.Forms.Button();
             this.CommentTextBox = new System.Windows.Forms.TextBox();
+            this.CloseFormButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.CloseFormButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -182,6 +182,20 @@ namespace UserDocumentControl
             this.CommentTextBox.TabIndex = 4;
             this.toolTip1.SetToolTip(this.CommentTextBox, "Name of .zip file to add directories to into archive folder");
             // 
+            // CloseFormButton
+            // 
+            this.CloseFormButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CloseFormButton.Image = global::UserDocumentControl.Properties.Resources.Exit_16x;
+            this.CloseFormButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CloseFormButton.Location = new System.Drawing.Point(575, 472);
+            this.CloseFormButton.Name = "CloseFormButton";
+            this.CloseFormButton.Size = new System.Drawing.Size(194, 23);
+            this.CloseFormButton.TabIndex = 3;
+            this.CloseFormButton.Text = "Close";
+            this.toolTip1.SetToolTip(this.CloseFormButton, "Save to configuration file");
+            this.CloseFormButton.UseVisualStyleBackColor = true;
+            this.CloseFormButton.Click += new System.EventHandler(this.CloseFormButton_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.CommentTextBox);
@@ -238,20 +252,6 @@ namespace UserDocumentControl
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
-            // CloseFormButton
-            // 
-            this.CloseFormButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.CloseFormButton.Image = global::UserDocumentControl.Properties.Resources.Exit_16x;
-            this.CloseFormButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CloseFormButton.Location = new System.Drawing.Point(575, 472);
-            this.CloseFormButton.Name = "CloseFormButton";
-            this.CloseFormButton.Size = new System.Drawing.Size(194, 23);
-            this.CloseFormButton.TabIndex = 3;
-            this.CloseFormButton.Text = "Close";
-            this.toolTip1.SetToolTip(this.CloseFormButton, "Save to configuration file");
-            this.CloseFormButton.UseVisualStyleBackColor = true;
-            this.CloseFormButton.Click += new System.EventHandler(this.CloseFormButton_Click);
-            // 
             // UserSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,7 +267,7 @@ namespace UserDocumentControl
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "UserSettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Code Sample";
+            this.Text = "Settings";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

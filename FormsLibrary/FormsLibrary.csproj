@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyHelpers.cs" />
     <Compile Include="Classes\Configuration.cs" />
     <Compile Include="Classes\BackupItem.cs" />
     <Compile Include="Classes\CueBannerTextCode.cs" />

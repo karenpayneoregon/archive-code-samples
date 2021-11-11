@@ -49,8 +49,6 @@ Before running
 ![img](ExtractFilesWithProgress/assets/main.png)
 
 
-
-
 # DotNetZip
 
 This library should be considered when Microsoft's archive classes do not meet specific requirements like notifictions of events, perhaps having the ability to validate a password for an archive file.
@@ -1060,6 +1058,9 @@ namespace TelerikZipCodeSamples
     }
 }
 ```
+
+# UserDocumentControl project
+
 
 
 

@@ -34,9 +34,7 @@ namespace UserDocumentControl
 
             _configuration = ConfigurationOperations.Read();
 
-            ArchiveFolderNameTextBox.Text = _configuration.LastFolderBrowsedIsValid ? 
-                _configuration.LastFolderBrowsed : 
-                EnvironmentHelpers.DocumentFolder();
+            ArchiveFolderNameTextBox.Text = _configuration.LastFolderBrowsedIsValid ? _configuration.LastFolderBrowsed : EnvironmentHelpers.DocumentFolder();
 
             if (_configuration.ArchiveFileNameIsValid)
             {
@@ -89,7 +87,6 @@ namespace UserDocumentControl
                 for (int index = 0; index < list.Count; index++)
                 {
                     FoldersCheckListBox.Items.Add(list[index].DirectoryName);
-
                     FoldersCheckListBox.SetItemCheckState(index, list[index].IncludeFolder ? CheckState.Checked : CheckState.Unchecked);
                 }
 
@@ -128,7 +125,6 @@ namespace UserDocumentControl
             }
 
             RemoveCurrentFolderButton.Enabled = FoldersCheckListBox.Items.Count > 0;
-
             
         }
 
