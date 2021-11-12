@@ -53,6 +53,7 @@
     <Compile Include="Base\MainTest.cs" />
     <Compile Include="Base\TestBase.cs" />
     <Compile Include="Base\TestTraitsAttribute.cs" />
+    <Compile Include="CustomAsserts\CustomerAsserts.cs" />
     <Compile Include="MainTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

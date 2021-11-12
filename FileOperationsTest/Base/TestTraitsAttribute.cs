@@ -14,7 +14,8 @@ namespace FileOperationsTest.Base
         ZipOperations,
         FileOperations,
         DirectoryOperations,
-        API
+        API,
+        CustomAssert
     }
     /// <summary>
     /// Declarative class for using Trait enum about for traits on test method.

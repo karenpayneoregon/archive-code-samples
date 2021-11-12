@@ -97,7 +97,7 @@ namespace CompressionLibrary
         /// </summary>
         /// <param name="fileName"></param>
         /// <param name="destinationFileName"></param>
-        /// <returns></returns>
+        /// <returns>N/A</returns>
         public async Task DecompressNoPasswordTask(string fileName, string destinationFileName = "")
         {
 
@@ -113,9 +113,7 @@ namespace CompressionLibrary
             string extractPath = Path.Combine(baseFolder, $"{DateTime.Now:HH-mm-ss-fff}");
             
             Directory.CreateDirectory(extractPath);
-
-
-
+            
             if (Directory.Exists(extractPath))
             {
                 var di = new DirectoryInfo(extractPath);
@@ -208,7 +206,7 @@ namespace CompressionLibrary
         /// <summary>
         /// View specific details of entries in a zip file
         /// </summary>
-        /// <param name="fileName">Existing zip file not passworded</param>
+        /// <param name="fileName">Existing zip file not password</param>
         /// <returns>contents of zip file</returns>
         /// <remarks>
         /// TODO Work in password
@@ -477,6 +475,11 @@ namespace CompressionLibrary
             }
         }
 
+        /// <summary>
+        /// Remove an existing entry from existing archive file. See <see cref="FindEntry"/>
+        /// </summary>
+        /// <param name="entry"></param>
+        /// <param name="zipFileName"></param>
         public void RemoveSingleFileFromFile(Entry entry, string zipFileName)
         {
 

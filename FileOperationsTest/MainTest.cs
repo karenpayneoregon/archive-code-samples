@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using CompressionLibrary;
 using CompressionLibrary.Classes;
 using FileOperationsTest.Base;
+using FileOperationsTest.CustomAsserts;
 using UtilityLibrary.UtilityApiLibrary;
 
 namespace FileOperationsTest
@@ -280,6 +281,15 @@ namespace FileOperationsTest
 
 
         }
+
+        [TestMethod]
+        [TestTraits(Trait.CustomAssert)]
+        public void CustomAssert()
+        {
+            Assert.That.InsensitiveStringEquals("abc def", "abc def");
+            Assert.That.NotStringEquals("abc def", "abc def ");
+        }
+
 
     }
 }

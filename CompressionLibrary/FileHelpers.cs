@@ -13,8 +13,8 @@ namespace CompressionLibrary
         /// <summary>
         /// Copy files in parent and child folders. Caller is an async task
         /// </summary>
-        /// <param name="sourcePath"></param>
-        /// <param name="targetPath"></param>
+        /// <param name="sourcePath">copy this path</param>
+        /// <param name="targetPath">target path to copy source path too</param>
         public static void CopyFilesRecursively(string sourcePath, string targetPath)
         {
             foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
@@ -61,8 +61,11 @@ namespace CompressionLibrary
         /// Creates the unique temporary directory.
         /// </summary>
         /// <returns>
-        /// Directory path.
+        /// Temporary unique directory
         /// </returns>
+        /// <remarks>
+        /// Use <see cref="RemoveUniqueTempDirectory"/> to remove this directory when finish with the directory
+        /// </remarks>
         public static (string folderName, Exception exception) CreateUniqueTempDirectory()
         {
             var uniqueTempDir = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
@@ -80,9 +83,9 @@ namespace CompressionLibrary
         }
 
         /// <summary>
-        /// Clean up
+        /// Clean up temporary directory created by <see cref="CreateUniqueTempDirectory"/>
         /// </summary>
-        /// <param name="tempDirectory"></param>
+        /// <param name="tempDirectory">directory created by &lt;see cref="CreateUniqueTempDirectory"/&gt;</param>
         /// <returns></returns>
         public static (bool success, Exception exception) RemoveUniqueTempDirectory(string tempDirectory)
         {
@@ -156,8 +159,7 @@ namespace CompressionLibrary
         /// <param name="extension">File extension with period, if not specified .zip is used</param>
         /// <returns>unique file name</returns>
         /// <remarks>
-        ///  -- is used to separate date part from time part, feel free to change this
-        /// Change this methods logic the method <see cref="DateTimeFromFileName"/> must be altered
+        ///  is used to separate date part from time part, feel free to change this. Change this methods logic the method <see cref="DateTimeFromFileName"/> must be altered and other possible methods
         /// </remarks>
         public static string UniqueFileName(bool useGuid,string extension = ".zip") => useGuid ? 
             $"{DateTime.Now:yyyy-dd-M--HH-mm-ss-ms}{Guid.NewGuid()}{extension}" : 
