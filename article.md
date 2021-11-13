@@ -1,10 +1,13 @@
 # Introduction
 
-Learn how to create archive (.zip) files using Microsoft classes, a dontationware library known as DotNetZip and a third party library, Telerik/Progress.
+Learn how to create archive (.zip) files using Microsoft classes, a dontationware library known as [DotNetZip](https://github.com/haf/DotNetZip.Semverd) and a third party library, [Telerik/Progress](https://docs.telerik.com/devtools/document-processing/libraries/radziplibrary/gettingstarted).
 
 Each of these provide basic functionality to create and extract file archive.
 
-**Note**: recommendation, if this article can not answer a specific question ask on [Stackoverflow](https://stackoverflow.com/search?q=%5Bc%23%5D+zip).
+**Notes**: 
+
+- Recommendation, if this article can not answer a specific question ask on [Stackoverflow](https://stackoverflow.com/search?q=%5Bc%23%5D+zip).
+- The Telerik project is not include in this solution but is the following folder `TelerikZipCodeSamples` as not causes issues for those who don't have a license as this is a paid for library.
 
 When working with [DotZip](https://github.com/haf/DotNetZip.Semverd) or [Telerik libraries](https://docs.telerik.com/devtools/document-processing/libraries/radziplibrary/gettingstarted) which offer password protection after a first time extraction a password is no longer required.
 
