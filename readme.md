@@ -1,6 +1,6 @@
 # About
 
-
+:green_circle:  **See details** in [article.md](https://github.com/karenpayneoregon/dotnetzip-operations/blob/article/article.md)
 
 A repository for creating, viewing and extraction operations using DotNetZip done with .NET Framework 4.8.
 
@@ -15,7 +15,7 @@ All code will run in .NET Core while not all developers have moved to .NET Core 
 
 
 
-:green_circle:  **See details** in [article.md](https://github.com/karenpayneoregon/dotnetzip-operations/blob/article/article.md)
+
 
 :small_orange_diamond: **DotNetZip** [doumentation](https://documentation.help/DotNetZip/About.htm)
 
