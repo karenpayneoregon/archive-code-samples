@@ -6,6 +6,15 @@ A repository for creating, viewing and extraction operations using DotNetZip don
 
 All code will run in .NET Core while not all developers have moved to .NET Core which is the reason for using .NET Framework 4.8. With DotNetZip code samples can be used cross-platform.
 
+![img](assets/progressDemo.png)
+
+![img](assets/UserDocumentControlWindows.png)
+
+![img](assets/create1.png)
+
+
+
+
 :green_circle:  **See details** in [article.md](https://github.com/karenpayneoregon/dotnetzip-operations/blob/article/article.md)
 
 :small_orange_diamond: **DotNetZip** [doumentation](https://documentation.help/DotNetZip/About.htm)
