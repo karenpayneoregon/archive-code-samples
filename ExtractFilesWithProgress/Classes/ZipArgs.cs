@@ -22,34 +22,13 @@ namespace ExtractFilesWithProgress.Classes
 				_percentDone = percentDone;
 				_extracted = extracted;
 			}
-			public string FileName
-			{
-				get
-				{
-					return _fileName;
-				}
-			}
-			public long FileLength
-			{
-				get
-				{
-					return _fileLength;
-				}
-			}
-			public int PercentDone
-			{
-				get
-				{
-					return _percentDone;
-				}
-			}
-			public bool Extracted
-			{
-				get
-				{
-					return _extracted;
-				}
-			}
-		}
+			public string FileName => _fileName;
+
+            public long FileLength => _fileLength;
+
+            public int PercentDone => _percentDone;
+
+            public bool Extracted => _extracted;
+        }
 	}
 }
