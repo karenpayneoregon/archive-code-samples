@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using CreateZipWithExtensions.Classes;
 
@@ -52,6 +53,26 @@ namespace CreateZipWithExtensions
                 CreateZipFromFolderButton.Enabled = true;
                 pictureBox1.Visible = false;
             }
+        }
+
+        /// <summary>
+        /// Example with a pre-done zip file as this means no need to pick a file.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ExtractButton_Click(object sender, EventArgs e)
+        {
+            var zipName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Archives", "assets.zip");
+            if (File.Exists(zipName))
+            {
+                var (_, exception) = ZipHelpers.Unzip(zipName, ".\\");
+                MessageBox.Show(exception is null ? "Done" : exception.Message);
+            }
+            else
+            {
+                MessageBox.Show($"Missing {zipName}");
+            }
+
         }
     }
 }

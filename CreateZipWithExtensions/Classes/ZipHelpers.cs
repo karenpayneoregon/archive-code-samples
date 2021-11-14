@@ -47,5 +47,34 @@ namespace CreateZipWithExtensions.Classes
             return result;
 
         }
+
+        /// <summary>
+        /// Extract a folder under a folder in the application path
+        /// </summary>
+        /// <param name="zipFileName">Zip file to extract from</param>
+        /// <param name="unzipPath">Where to extract to</param>
+        /// <returns>success and if an exception return it</returns>
+        /// <remarks>If the unzipPath exists delete it else an exception is thrown indicating one or more files exists. If there are a lot of files consider using a Task</remarks>
+        public static (bool success, Exception exception) Unzip(string zipFileName, string unzipPath)
+        {
+            try
+            {
+                var folderName = Path.GetFileNameWithoutExtension(zipFileName);
+
+                if (Directory.Exists(folderName))
+                {
+                    Directory.Delete(folderName,true);
+                }
+
+                ZipFile.ExtractToDirectory(zipFileName, unzipPath);
+
+                return (true, null);
+
+            }
+            catch (Exception ex)
+            {
+                return (false, ex);
+            }
+        }
     }
 }
