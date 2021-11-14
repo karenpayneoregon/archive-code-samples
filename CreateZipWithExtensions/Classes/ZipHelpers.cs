@@ -7,11 +7,16 @@ namespace CreateZipWithExtensions.Classes
 {
     public static class ZipHelpers
     {
-
+        /// <summary>
+        /// Create an archive/zip file from either a directory or single file
+        /// </summary>
+        /// <param name="sourceName">Folder or file to create zip file for</param>
+        /// <param name="zipFileName">Name of zip file which can include a path\file name</param>
+        /// <returns>success and exception if a runtime exception was raised</returns>
         public static async Task<(bool success, Exception exception)> CreateEntryFromAnyAsync(string sourceName, string zipFileName)
         {
             
-            var results =  await Task.Run(async () =>
+            var result =  await Task.Run(async () =>
             {
                 await Task.Delay(0);
 
@@ -39,7 +44,7 @@ namespace CreateZipWithExtensions.Classes
                 }
             });
 
-            return results;
+            return result;
 
         }
     }
