@@ -12,6 +12,8 @@ All code will run in .NET Core while not all developers have moved to .NET Core 
 
 ![img](assets/create1.png)
 
+![img](CreateZipWithExtensions/assets/figure1.png)
+
 
 
 
