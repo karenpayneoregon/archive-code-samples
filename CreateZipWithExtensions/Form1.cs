@@ -40,6 +40,12 @@ namespace CreateZipWithExtensions
             CreateZipFromFolderButton.Enabled = false;
             pictureBox1.Visible = true;
 
+            if (!Directory.Exists("C:\\OED\\Documents"))
+            {
+                MessageBox.Show("Invalid path");
+                return;
+            }
+
             try
             {
                 var (success, exception) = await ZipHelpers.CreateEntryFromAnyAsync("C:\\OED\\Documents", FileHelpers.ZipFileName);
