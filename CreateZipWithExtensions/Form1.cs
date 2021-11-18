@@ -17,6 +17,12 @@ namespace CreateZipWithExtensions
 
         private async void CreateZipWithOneFileButton_Click(object sender, EventArgs e)
         {
+            if (!Directory.Exists("C:\\OED\\Documents"))
+            {
+                MessageBox.Show("Invalid path");
+                return;
+            }
+
             CreateZipFromFolderButton.Enabled = false;
             pictureBox1.Visible = true;
 
@@ -37,15 +43,15 @@ namespace CreateZipWithExtensions
 
         private async void CreateZipFromFolderButton_Click(object sender, EventArgs e)
         {
-            CreateZipFromFolderButton.Enabled = false;
-            pictureBox1.Visible = true;
-
             if (!Directory.Exists("C:\\OED\\Documents"))
             {
                 MessageBox.Show("Invalid path");
                 return;
             }
 
+            CreateZipFromFolderButton.Enabled = false;
+            pictureBox1.Visible = true;
+            
             try
             {
                 var (success, exception) = await ZipHelpers.CreateEntryFromAnyAsync("C:\\OED\\Documents", FileHelpers.ZipFileName);
