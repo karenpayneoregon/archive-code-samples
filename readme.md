@@ -1,4 +1,4 @@
-# About
+# Learn how to work with archive (.zip) files
 
 :green_circle:  **See details** in [article.md](https://github.com/karenpayneoregon/dotnetzip-operations/blob/article/article.md)
 
