@@ -156,6 +156,56 @@ namespace CompressionLibrary
             });
         }
 
+        /// <summary>
+        /// Decompress files in .zip file
+        /// </summary>
+        /// <param name="fileName">Zip file</param>
+        /// <param name="baseFolder">Location to unzip which will have a datetime appended</param>
+        public async Task DecompressTask(string fileName, string baseFolder)
+        {
+            ZipEntry currentEntry = new ZipEntry();
+
+            string extractPath = Path.Combine(baseFolder, $"{DateTime.Now:HH-mm-ss-fff}");
+
+            Directory.CreateDirectory(extractPath);
+
+            if (Directory.Exists(extractPath))
+            {
+                if (Directory.Exists(extractPath))
+                {
+                    Directory.Delete(extractPath, true);
+                }
+            }
+
+            await Task.Run(async () =>
+            {
+
+                using (var zip = ZipFile.Read(fileName))
+                {
+                    // subscribers get notification of each file extracted
+                    zip.ExtractProgress += ZipOnExtractProgress;
+
+                    var selection = from zipEntry in zip.Entries select zipEntry;
+
+                    try
+                    {
+                        foreach (ZipEntry entry in selection)
+                        {
+                            currentEntry = entry;
+                            entry.Extract(extractPath);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // TODO
+                    }
+                }
+
+                await Task.Delay(50);
+
+            });
+        }
+
         private void ZipOnExtractProgress(object sender, ExtractProgressEventArgs e)
         {
             SendProgressUpdate?.Invoke(sender, e);
